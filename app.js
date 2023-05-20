@@ -1,4 +1,5 @@
 //jshint esversion:6
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -23,5 +24,6 @@ app.get("/register",function(req,res){
 app.listen(3000,function(){
     console.log("server is running on port 3000");
 })
+
 
 
