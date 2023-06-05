@@ -2,13 +2,10 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
+
 const app = express();
 const mongoose =  require("mongoose");
-const encrypt = require("mongoose-encryption")
-const md5 = require("md5")
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
+
 const session = require('express-session');
 const passport = require('passport')
 const passportLocalMongoose = require('passport-local-mongoose')
@@ -26,7 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 mongoose.connect("mongodb://localhost:27017/userDB",{useNewUrlParser:true});  
-// mongoose.set("useCreateIndex",true);
+
 
 const userSchema = new mongoose.Schema({
     email:String,
@@ -35,7 +32,6 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.plugin(passportLocalMongoose);
-//userSchema.plugin(encrypt,{secret:secret,encryptedFields:['password']});
 const User = new mongoose.model("User",userSchema);
 
 passport.use(User.createStrategy());
