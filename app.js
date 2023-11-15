@@ -30,7 +30,6 @@ const userSchema = new mongoose.Schema({
     password:String
 });
 
-
 userSchema.plugin(passportLocalMongoose);
 const User = new mongoose.model("User",userSchema);
 
